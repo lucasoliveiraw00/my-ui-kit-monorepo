@@ -15,9 +15,9 @@ const backgroundColor = {
 };
 
 const size = {
-  md: 32,
-  lg: 40,
-  xl: 55,
+  md: 10,
+  lg: 15,
+  xl: 20,
 };
 
 export const Button = (props: ButtonProps) => {
@@ -35,7 +35,7 @@ export const Button = (props: ButtonProps) => {
         styles.container,
         {
           backgroundColor: handleColor(),
-          paddingHorizontal: handleSize(),
+          paddingVertical: handleSize(),
         },
       ]}
       onPress={props.onPress}
@@ -48,7 +48,9 @@ export const Button = (props: ButtonProps) => {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 8,
+    paddingHorizontal: 12,
     borderRadius: 8,
+    alignItems: "center",
   },
   text: { color: "white", fontSize: 16, fontWeight: "bold" },
 });

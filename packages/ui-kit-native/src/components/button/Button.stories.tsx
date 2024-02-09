@@ -1,34 +1,56 @@
-import React from "react";
-import { View } from "react-native";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ButtonProps, Button } from "./Button";
+import { Button } from "./Button";
 
 type Story = StoryObj<typeof Button>;
 
-const StarterComponent = (props: ButtonProps) => (
-  <View
-    style={{
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <Button {...props} />
-  </View>
-);
-
 const meta: Meta<typeof Button> = {
+  component: Button,
   title: "Button",
-  component: StarterComponent,
-};
+  args: {
+    text: "Olá mundo",
+    size: "md",
+    type: "info",
+  },
+  argTypes: {
+    onPress: { action: "Pressionou o botão" },
+    text: {
+      name: "Text",
+      control: {
+        type: "text",
+      },
+    },
+    size: {
+      name: "Tamanho",
+      control: {
+        type: "select",
+      },
+      options: ["md", "lg", "xl"],
+    },
+    type: {
+      name: "Tipo",
+      control: {
+        type: "select",
+      },
+      options: ["primary", "secondary", "info"],
+    },
+  },
+  parameters: {
+    notes: `
+# Button
+
+Este é um componente de botão.
+Utiliza-o desta forma:
+
+\`\`\`tsx    
+<Button 
+      text="Olá mundo!" 
+      onPress={() => console.log('pressed')} 
+/>
+\`\`\`
+`,
+  },
+} satisfies Meta<typeof Button>;
 
 export default meta;
 
-export const GettingStarted = {
-  args: {
-    text: "Olá mundo",
-  },
-  parameters: {
-    noBackground: true,
-  },
-} as Story;
+export const Basic: Story = {};
